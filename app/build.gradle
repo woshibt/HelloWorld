@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-// apply Groovy Android plugin after the standard Android plugin
+//Jing: apply Groovy Android plugin after the standard Android plugin
 apply plugin: 'groovyx.grooid.groovy-android'
 
 android {
@@ -19,14 +19,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //Jing: to suppress errors caused by Groovy calling unsupported java code which Android doesn’t like.
+    lintOptions {
+        disable 'InvalidPackage'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
+    //Jing: use groovy
     compile 'org.codehaus.groovy:groovy:2.4.0:grooid'
-    //I want SwissKnife to update automatically
+    //Jing: I want SwissKnife to update automatically
     compile 'com.arasthel:swissknife:+'
+    //Jing: Use Volley for client-server communication
+    compile 'com.mcxiaoke.volley:library:1.0.+'
 }
 //Jing---here's to change the default Groovy compilation option from 1.6 to 1.7
 project.androidGroovy {

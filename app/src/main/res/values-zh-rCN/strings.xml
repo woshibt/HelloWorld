@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">你好啊World</string>
+    <string name="checkWeather">查看实时天气</string>
 </resources>

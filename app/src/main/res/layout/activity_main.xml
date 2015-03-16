@@ -11,4 +11,13 @@
         android:id="@+id/textview_hello_android"
         android:textColor="@color/orange"
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkWeather"
+        android:id="@+id/weatherBtn"
+        android:layout_gravity="right"/>
+
+
 </LinearLayout>
