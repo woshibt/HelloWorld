@@ -1,7 +1,7 @@
-package me.vable.android.helloworld;
+package me.vable.android.helloworld
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
+import android.app.Application
+import android.test.ApplicationTestCase
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>

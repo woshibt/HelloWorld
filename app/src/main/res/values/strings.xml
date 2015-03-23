@@ -5,4 +5,15 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="generic_error">Oops, Some Error</string>
+    <string name="generic_timeout">Oops, Timeout</string>
+    <string name="generic_server_down">Oops,server passed out</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="no_connection_toServer">Unable to connect server</string>
+    <string name="generic_requestWrongFormat_400">Oops, wrong request, got a BUG!</string>
+    <string name="generic_not_authroized_401">Oops, Certificate Not Authroized</string>
+    <string name="generic_access_forbidden_403">Oops, forbidden by server</string>
+    <string name="generic_resources_not_found_404">Oops, famous 404</string>
+    <string name="generic_server_internel_error_500">Oops, server in trouble!!!</string>
 </resources>

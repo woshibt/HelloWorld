@@ -29,6 +29,8 @@ class MainActivity extends Activity{
 
         // This must be called for saved state restoring
         //SwissKnife.restoreState(this, savedInstanceState);
+
+
 /*
     //注释掉的是没用swissknife的写法
         def btn = findViewById(R.id.weatherBtn)
@@ -47,8 +49,8 @@ class MainActivity extends Activity{
     }
     */
     @OnClick(R.id.weatherBtn)
-    def onBtnClicked(){          //随便命名都行
-        application.weatherData = "haha"
+    def onBtnClicked(){          //any function name works
+        application.weatherData = "Touch me,   I will show you some weather"
         def intent = new Intent(this,SyncResult)
         startActivity(intent)
     }
