@@ -16,4 +16,9 @@
     <string name="generic_access_forbidden_403">Oops, forbidden by server</string>
     <string name="generic_resources_not_found_404">Oops, famous 404</string>
     <string name="generic_server_internel_error_500">Oops, server in trouble!!!</string>
+
+
+    <string name="imgLoadDemo">ImageLoader demo</string>
+
+
 </resources>

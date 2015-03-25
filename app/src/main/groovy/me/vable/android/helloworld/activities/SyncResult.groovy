@@ -15,6 +15,7 @@ import org.json.JSONObject
 public class SyncResult extends ActionBarActivity {
     def list = []
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,7 @@ public class SyncResult extends ActionBarActivity {
             view.setText(response.data.toString())
         }
 
+        //通常没用，只是测试 MyVolley的API
         public void demoErrorHandler(VolleyError error){
             def view  = this.list[0]
             view.setText(error.getMessage());

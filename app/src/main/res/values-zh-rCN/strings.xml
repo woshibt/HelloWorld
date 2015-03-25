@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">你好啊World</string>
     <string name="checkWeather">查看实时天气</string>
+    <string name="imgLoadDemo">demo 加载远程图片</string>
 </resources>

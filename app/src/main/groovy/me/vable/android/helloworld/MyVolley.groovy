@@ -1,15 +1,13 @@
 package me.vable.android.helloworld
 
+import android.app.Activity
 import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
 import android.text.TextUtils
 import android.util.Log
 import com.android.volley.*
-import com.android.volley.toolbox.HttpClientStack
-import com.android.volley.toolbox.ImageLoader
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
+import com.android.volley.toolbox.*
 import groovy.json.JsonSlurper
 import me.vable.android.helloworld.models.BitmapLruCache
 import me.vable.android.helloworld.models.PersistentCookieStore
@@ -26,6 +24,13 @@ import java.util.concurrent.ConcurrentHashMap
  * A class with clean APIs to write RESTful HTTP requests,
  * A customized "static" class "with NO instance" to handle the singleton [queue] & the singleton [imageLoader] in the whole Application
  * ---Author: Jing
+ * Referecne:
+ *    Variable init:
+ *      https://github.com/ogrebgr/android_volley_examples/blob/master/src/com/github/volley_examples/app/MyVolley.java
+ *    JsonRequest:
+ *      https://github.com/ogrebgr/android_volley_examples/blob/master/src/com/github/volley_examples/Act_JsonRequest.java
+ *    Header / Cookie / error:
+ *      http://arnab.ch/blog/2013/08/asynchronous-http-requests-in-android-using-volley/
  *
  *
  * [API samples]
@@ -168,6 +173,7 @@ class MyVolley{
         String theTag = TextUtils.isEmpty(tag) ? TAG : tag;
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(theTag);
+            mRequestQueue.c
         }
     }
 
@@ -264,7 +270,6 @@ class MyVolley{
      */
     public static void asyncCall(Application appInstance ,ReqJson reqJson){
         Log.i("MyVolley","asyncCall......")
-        //TODO 先检查 noNetworkConnection  没网就拉鸡巴倒
 
         JSONObject params = reqJson.params?(new JSONObject(reqJson.params)):(new JSONObject())
 
@@ -330,5 +335,24 @@ class MyVolley{
         } else {
             throw new IllegalStateException("ImageLoader not initialized");
         }
+    }
+
+    /**
+     * use imageLoader(with LruCache) to load an image into a view
+     * @param viewResourceId
+     * @param imgUrl
+     * @param activity       in Activity, use "this" ;  in Fragment, use "getActivity()"
+     */
+    public static void loadImg(int viewResourceId, String imgUrl,Activity activity) {
+        loadImg(viewResourceId, imgUrl,activity,null,null)
+    }
+    public static void loadImg(int viewResourceId, String imgUrl,Activity activity, defaultImageResId,errorImageResId) {
+        NetworkImageView imgView = (NetworkImageView)(activity.findViewById(viewResourceId))
+        //Log.i("AndroidRuntime",imgView.toString())
+        int defaultImg = defaultImageResId?:R.drawable.default_image
+        imgView.setDefaultImageResId(defaultImg);
+        int failImg = errorImageResId?:R.drawable.failed_image
+        imgView.setErrorImageResId(failImg);
+        imgView.setImageUrl(imgUrl,imageLoader);
     }
 }
