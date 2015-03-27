@@ -12,6 +12,11 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        //to define a variable to be generated to BuildConfig.java for future various env usage
+        buildConfigField "boolean", "IS_DEV_ENV", "true"
+        //pre config two servers settings for various env
+        buildConfigField "String", "DEV_SERVER", '"http://localhost:80"'
+        buildConfigField "String", "PRODUCT_SERVER", '"http://kidfun.com:8080"'
     }
     buildTypes {
         release {

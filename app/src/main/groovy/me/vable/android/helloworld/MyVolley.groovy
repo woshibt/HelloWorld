@@ -120,7 +120,7 @@ class MyVolley{
     /**
      * @return PersistentCookieStore        the singleton one
      */
-    public  PersistentCookieStore getCookieStore() {
+    public static PersistentCookieStore getCookieStore() {
         return myCookieStore;
     }
 
@@ -238,7 +238,7 @@ class MyVolley{
                         try {
                             // server might return error like this { "error": "Some error occured" }
                             // Use "Gson" to parse the result
-                            HashMap<String, String> result = new JsonSlurper().parseText(response.data)
+                            HashMap<String, String> result = new JsonSlurper().parse(response.data)
                             if (result != null && result.containsKey("error")) {
                                 return result.get("error");
                             }
@@ -317,7 +317,7 @@ class MyVolley{
             myReq.setRetryPolicy(reqJson.retryPolicy);   //20sec timeout, retry 1 time,
         };
 
-        this.addToRequestQueue(myReq,reqJson.tag);
+        addToRequestQueue(myReq,reqJson.tag);
 
     }
 
@@ -348,7 +348,8 @@ class MyVolley{
     }
     public static void loadImg(int viewResourceId, String imgUrl,Activity activity, defaultImageResId,errorImageResId) {
         NetworkImageView imgView = (NetworkImageView)(activity.findViewById(viewResourceId))
-        //Log.i("AndroidRuntime",imgView.toString())
+        Log.i("MyVolley loadImg",imgView.toString())
+
         int defaultImg = defaultImageResId?:R.drawable.default_image
         imgView.setDefaultImageResId(defaultImg);
         int failImg = errorImageResId?:R.drawable.failed_image
