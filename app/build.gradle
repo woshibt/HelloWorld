@@ -7,8 +7,9 @@ android {           //编译android项目的参数
     buildToolsVersion "22.0.0"
     defaultConfig {
         applicationId "me.vable.android.helloworld"     //应用的包名
-        minSdkVersion 22
+        minSdkVersion 18
         targetSdkVersion 22
+        versionCode 2
         versionName '1.5'
         //Jing: 自定义配置参数，会自动编译到 BuildConfig.java for future various env usage
         buildConfigField "boolean", "IS_DEV_ENV", "true"
