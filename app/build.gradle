@@ -5,13 +5,11 @@ apply plugin: 'groovyx.grooid.groovy-android'
 android {           //编译android项目的参数
     compileSdkVersion 22
     buildToolsVersion "22.0.0"
-
     defaultConfig {
         applicationId "me.vable.android.helloworld"     //应用的包名
         minSdkVersion 22
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionName '1.5'
         //Jing: 自定义配置参数，会自动编译到 BuildConfig.java for future various env usage
         buildConfigField "boolean", "IS_DEV_ENV", "true"
         //pre config two servers settings for various env
@@ -19,12 +17,10 @@ android {           //编译android项目的参数
         buildConfigField "String", "PRODUCT_SERVER", '"http://kidfun.com:8080"'
     }
     // java版本
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
-
     //Jing: to suppress errors caused by Groovy calling unsupported java code which Android doesn’t like.
     lintOptions {
         disable 'InvalidPackage'
@@ -41,8 +37,6 @@ android {           //编译android项目的参数
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/LGPL2.1'
     }
-
-
 /*
     signingConfigs {//签名--------你自己的keystore信息
         release {
@@ -62,37 +56,29 @@ android {           //编译android项目的参数
             shrinkResources true   //Resource Shrinking 自动删除没用到的resource文件
             //代码混淆设置
             minifyEnabled false     //是否混淆
-                                //默认的proguard文件去进行混淆，也可以使用自己编写的规则进行混淆，proguardFile 'some-other-rules.txt'
+            //默认的proguard文件去进行混淆，也可以使用自己编写的规则进行混淆，proguardFile 'some-other-rules.txt'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     /** 生成多个不同渠道包，定义多种参数
+     productFlavors {flavor1 {packageName "com.example.flavor1"
+     versionCode 20
+     proguardFile 'some-other-rules.txt'}flavor2 {packageName "com.example.flavor2"
+     minSdkVersion 14}}*/
     productFlavors {
-        flavor1 {
-            packageName "com.example.flavor1"
-            versionCode 20
-            proguardFile 'some-other-rules.txt'
-        }
-        flavor2 {
-            packageName "com.example.flavor2"
-            minSdkVersion 14
-        }
     }
-    */
-
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //Jing  to enable concurrent requests, an Apache HttpClient v4.4 port for Android is needed
-    compile group: 'org.apache.httpcomponents', name:'httpclient-android', version: '4.3.5.1'
+    compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
     //Jing: keep this compatible with highest version in \Users\liujing\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\appcompat-v7
     compile 'com.android.support:appcompat-v7:22.0.0'
     //Jing: use groovy
     compile 'org.codehaus.groovy:groovy:2.4.1:grooid'
     //Jing:the following dependency is necessary if you want JSON support
-    compile ('org.codehaus.groovy:groovy-json:2.4.1'){
+    compile('org.codehaus.groovy:groovy-json:2.4.1') {
         transitive = false
     }
     //Jing: I want SwissKnife to update automatically
