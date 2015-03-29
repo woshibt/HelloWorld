@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
+buildscript {           //设置脚本的运行环境
     repositories {
         jcenter()
         //Jing---here's to try dev version : https://github.com/groovy/groovy-android-gradle-plugin
