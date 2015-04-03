@@ -26,7 +26,7 @@ class MainActivity extends Activity{
         // This must be called for injection of views and callbacks to take place
         SwissKnife.inject(this);
         // This must be called for saved state restoring  恢复之前的数据状态（例如有啥玩意儿勾选了)
-        SwissKnife.restoreState(this, savedInstanceState);
+        //SwissKnife.restoreState(this, savedInstanceState);
 
         if(application.isFirstRun()){
             application.show("first time run, great!")

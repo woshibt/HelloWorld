@@ -14,6 +14,9 @@ buildscript {           //设置脚本的运行环境
         classpath 'org.codehaus.groovy:gradle-groovy-android-plugin:0.3.6-SNAPSHOT'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        // For plug-in 'android-unit-test'
+        // classpath 'com.github.jcandksolutions.gradle:android-unit-test:2.1.1'
     }
 }
 
